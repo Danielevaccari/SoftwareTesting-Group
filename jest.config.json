@@ -1,0 +1,11 @@
+{
+	"bail": 1,
+	"verbose": true,
+	"coverageDirectory": "./scripts",
+	"moduleFileExtensions": ["js"],
+	"roots": ["<rootDir>", "./tests"],
+	"transform": {},
+	"modulePaths": ["<rootDir>", "./tests"],
+	"moduleDirectories": ["node_modules"],
+	"coveragePathIgnorePatterns": ["/node_modules/", "/.internal/"]
+}

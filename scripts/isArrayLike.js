@@ -1,4 +1,4 @@
-import isLength from "./isLength.js";
+import isLength from "./.internal/isLength.js";
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
