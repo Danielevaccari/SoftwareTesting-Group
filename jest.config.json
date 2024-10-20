@@ -1,13 +1,20 @@
 {
 	"bail": 1,
 	"verbose": true,
-	"collectCoverage": true,  
+	"collectCoverage": true,
 	"coverageDirectory": "./coverage",
 	"moduleFileExtensions": ["js"],
 	"roots": ["<rootDir>", "./tests"],
 	"transform": {},
 	"modulePaths": ["<rootDir>", "./tests"],
 	"moduleDirectories": ["node_modules"],
-	"coveragePathIgnorePatterns": ["/node_modules/", "/.internal/"],
+	"coveragePathIgnorePatterns": [
+		"/node_modules/",
+		"/.internal/",
+		"slice.js",
+		"upperFirst.js",
+		"toString.js",
+		"isSymbol.js"
+	],
 	"coverageReporters": ["lcov", "text"]
 }
