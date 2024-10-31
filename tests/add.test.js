@@ -1,7 +1,7 @@
 import { expect } from "@jest/globals";
 import add from "../scripts/add.js";
 
-describe("general tests add.js", () => {
+describe("add.js general tests", () => {
 	test("adds two numbers correctly", () => {
 		expect(add(1, 2)).toBe(3);
 	});
@@ -50,7 +50,7 @@ describe("general tests add.js", () => {
 	/**
 	 * Scenario 1
 	 */
-	describe("Scenario 1", () => {
+	describe("scenario 1", () => {
 		test("increments search result count", () => {
 			const initialCount = 0;
 			expect(add(initialCount, 1)).toBe(1);
@@ -60,7 +60,7 @@ describe("general tests add.js", () => {
 	/**
 	 * Scenario 2
 	 */
-	describe("Scenario 2", () => {
+	describe("scenario 2", () => {
 		test("adds item quantity to cart", () => {
 			expect(add(0, 1)).toBe(1); // New item added to cart
 			expect(add(1, 2)).toBe(3); // Quantity of an existing item increased
@@ -86,7 +86,7 @@ describe("general tests add.js", () => {
 	/**
 	 * Scenario 3
 	 */
-	describe("Scenario 3", () => {
+	describe("scenario 3", () => {
 		test("decrementing available stock", () => {
 			expect(add(50, -10)).toBe(40); // Reducing stock
 		});

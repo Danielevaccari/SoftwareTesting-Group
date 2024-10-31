@@ -1,6 +1,6 @@
 import capitalize from "../scripts/capitalize.js";
 
-describe("general tests capitalize.js", () => {
+describe("capitalize.js general tests", () => {
 	test("should capitalize the first letter of a string", () => {
 		expect(capitalize("fred")).toBe("Fred");
 	});
@@ -30,7 +30,7 @@ describe("general tests capitalize.js", () => {
 	/**
 	 * Scenario 1
 	 */
-	describe("Scenario 1", () => {
+	describe("scenario 1", () => {
 		test("capitalizes search term", () => {
 			expect(capitalize("organic apple")).toBe("Organic apple");
 		});
@@ -51,7 +51,7 @@ describe("general tests capitalize.js", () => {
 	/**
 	 * Scenario 2
 	 */
-	describe("Scenario 2", () => {
+	describe("scenario 2", () => {
 		test("capitalizes product names in the cart", () => {
 			expect(capitalize("apple juice")).toBe("Apple juice");
 		});
@@ -75,7 +75,7 @@ describe("general tests capitalize.js", () => {
 	/**
 	 * Scenario 3
 	 */
-	describe("Scenario 3", () => {
+	describe("scenario 3", () => {
 		test("capitalizes the product name for consistency", () => {
 			expect(capitalize("organic honey")).toBe("Organic honey");
 		});
