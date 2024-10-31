@@ -1,7 +1,7 @@
 import { expect } from "@jest/globals";
 import add from "../scripts/add.js";
 
-describe("General tests for add.js", () => {
+describe("general tests add.js", () => {
 	test("adds two numbers correctly", () => {
 		expect(add(1, 2)).toBe(3);
 	});
@@ -48,7 +48,7 @@ describe("General tests for add.js", () => {
 	});
 
 	/**
-	 * Scenario 1: Search UI and Filter Options, Products List View (Front-end)
+	 * Scenario 1
 	 */
 	describe("Scenario 1", () => {
 		test("increments search result count", () => {
@@ -58,7 +58,7 @@ describe("General tests for add.js", () => {
 	});
 
 	/**
-	 * Scenario 2: Cart handling and checkout
+	 * Scenario 2
 	 */
 	describe("Scenario 2", () => {
 		test("adds item quantity to cart", () => {
@@ -84,7 +84,7 @@ describe("General tests for add.js", () => {
 	});
 
 	/**
-	 * Scenario 3: Login and Registration, Add Product (Producer-side)
+	 * Scenario 3
 	 */
 	describe("Scenario 3", () => {
 		test("decrementing available stock", () => {
