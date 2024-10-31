@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/Danielevaccari/SoftwareTesting-Group/badge.svg)](https://coveralls.io/github/Danielevaccari/SoftwareTesting-Group)
+
 # SoftwareTesting-Group
 
 // How to run tests
