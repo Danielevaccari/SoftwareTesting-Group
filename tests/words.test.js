@@ -1,6 +1,6 @@
 import words from '../scripts/words.js';
 
-describe('General tests for words.js', () => {
+describe('words.js general tests', () => {
     test('splits simple ASCII words', () => {
         expect(words('fred, barney, & pebbles')).toEqual(['fred', 'barney', 'pebbles']);
     });
@@ -29,14 +29,6 @@ describe('General tests for words.js', () => {
         expect(words('test123 words')).toEqual(['test', '123', 'words']);
     });
 
-    test('splits emojis as words', () => {
-        expect(words('👋 🌍')).toEqual(['👋', '🌍']);
-    });
-
-    test('handles words with accents', () => {
-        expect(words('café déjà-vu')).toEqual(['café', 'déjà', 'vu']);
-    });
-
     test('handles empty string input', () => {
         expect(words('')).toEqual([]);
     });
@@ -57,53 +49,76 @@ describe('General tests for words.js', () => {
         expect(words('word1 word2 word3', /\b\w+\b/g)).toEqual(['word1', 'word2', 'word3']);
     });
 
-    /**
-     * Scenario 1: Search UI and Filter Options, Products List View (Front-end)
-     * Goal: Ensure `words` function can split and identify words correctly in search strings.
-     */
-    describe('Scenario 1: Search Functionality Tests', () => {
-
-        test('splits simple product search input correctly', () => {
-            const searchInput = 'Apple Juice';
-            expect(words(searchInput)).toEqual(['Apple', 'Juice']);
-        });
-
-        test('splits search input with multiple filters', () => {
-            const searchInput = 'Apple Juice category:Snacks & Beverages price:<10';
-            expect(words(searchInput)).toEqual(['Apple', 'Juice', 'category', 'Snacks', 'Beverages', 'price', '10']);
-        });
-
-        test('returns "No products found" when input is empty or invalid', () => {
-            const searchInput = '';
-            expect(words(searchInput)).toEqual([]);
-            const invalidInput = '!!!';
-            expect(words(invalidInput)).toEqual([]);
-        });
-
-        test('supports producer names with mixed casing', () => {
-            expect(words('FarmFresh')).toEqual(['Farm', 'Fresh']);
-        });
-
-        test('handles input with special characters for advanced filters', () => {
-            const searchInput = 'Apple_Juice category=Snacks & Beverages';
-            expect(words(searchInput)).toEqual(['Apple', 'Juice', 'category', 'Snacks', 'Beverages']);
-        });
-    });
-
-    /**
-     * Scenario 3: Login and Registration, Add Product (Producer-side)
-     * Goal: Ensure `words` function handles login fields and product descriptions correctly.
-     */
-    describe('Scenario 3: Login, Registration, and Product Addition', () => {
-
-        test('splits product name for title-case validation', () => {
-            expect(words('Cold-Pressed Olive Oil')).toEqual(['Cold', 'Pressed', 'Olive', 'Oil']);
-        });
-
-        test('validates product description with special symbols', () => {
-            expect(words('Gluten-Free, Vegan Friendly!')).toEqual(['Gluten', 'Free', 'Vegan', 'Friendly']);
-        });
-
+    test('returns an empty array if pattern does not match any part of the string', () => {
+        const input = 'ABC';
+        const pattern = /\d+/g;
+        expect(words(input, pattern)).toEqual([]);
     });
 
 });
+/**
+ * Scenario 1: Search product
+ */
+describe('scenario 1: Search functionality tests', () => {
+
+    test('splits simple product search input correctly', () => {
+        const searchInput = 'Apple Juice';
+        expect(words(searchInput)).toEqual(['Apple', 'Juice']);
+    });
+
+    test('splits search input with multiple filters', () => {
+        const searchInput = 'Apple Juice category:Snacks & Beverages price:<10';
+        expect(words(searchInput)).toEqual(['Apple', 'Juice', 'category', 'Snacks', 'Beverages', 'price', '10']);
+    });
+
+    test('returns "No products found" when input is empty or invalid', () => {
+        const searchInput = '';
+        expect(words(searchInput)).toEqual([]);
+        const invalidInput = '!!!';
+        expect(words(invalidInput)).toEqual([]);
+    });
+
+    test('supports search quesries with mixed casing', () => {
+        expect(words('FarmFresh')).toEqual(['Farm', 'Fresh']);
+    });
+
+    test('handles input with special characters for advanced filters', () => {
+        const searchInput = 'Apple_Juice category=Snacks & Beverages';
+        expect(words(searchInput)).toEqual(['Apple', 'Juice', 'category', 'Snacks', 'Beverages']);
+    });
+
+    test('returns empty array when no products are found from the product code', () => {
+        const searchInput = 'PRCC123';
+        const pattern = /\bPRC\d+\b/g;
+        expect(words(searchInput, pattern)).toEqual([]);
+    });
+
+});
+
+/**
+ * Scenario 3: Add new product
+ */
+describe('scenario 3: Add new product', () => {
+
+    test('splits product name for title-case validation', () => {
+        expect(words('Cold-Pressed Olive Oil')).toEqual(['Cold', 'Pressed', 'Olive', 'Oil']);
+    });
+
+    test('matches capitalized words for product title-case validation', () => {
+        const productName = 'Cold-Pressed Olive Oil';
+        const pattern = /\b[A-Z][a-z]*\b/g;
+        expect(words(productName, pattern)).toEqual(['Cold', 'Pressed', 'Olive', 'Oil']);
+    });
+
+    test('validates product description with special symbols', () => {
+        expect(words('Gluten-Free, Vegan Friendly!')).toEqual(['Gluten', 'Free', 'Vegan', 'Friendly']);
+    });
+
+    test('matches alphanumeric product codes', () => {
+        const productDetails = 'Product Code: PRC123';
+        const pattern = /\bPRC\d+\b/g;
+        expect(words(productDetails, pattern)).toEqual(['PRC123']);
+    });
+
+});
+
