@@ -14,7 +14,13 @@
 		"slice.js",
 		"upperFirst.js",
 		"toString.js",
-		"isSymbol.js"
+		"isSymbol.js",
+		"isObject.js",
+		"isArguments.js",
+		"isBuffer.js",
+		"isTypedArray.js",
+		"isObjectLike.js",
+		"isLength.js"
 	],
 	"coverageReporters": ["lcov", "text"]
 }

@@ -54,13 +54,12 @@ describe('words.js general tests', () => {
         const pattern = /\d+/g;
         expect(words(input, pattern)).toEqual([]);
     });
-
 });
+
 /**
- * Scenario 1: Search product
+ * Scenario 1: Search functionality
  */
 describe('scenario 1: Search functionality tests', () => {
-
     test('splits simple product search input correctly', () => {
         const searchInput = 'Apple Juice';
         expect(words(searchInput)).toEqual(['Apple', 'Juice']);
@@ -92,14 +91,12 @@ describe('scenario 1: Search functionality tests', () => {
         const pattern = /\bPRC\d+\b/g;
         expect(words(searchInput, pattern)).toEqual([]);
     });
-
 });
 
 /**
  * Scenario 3: Add new product
  */
-describe('scenario 3: Add new product', () => {
-
+describe('scenario 3: Add new product tests', () => {
     test('splits product name for title-case validation', () => {
         expect(words('Cold-Pressed Olive Oil')).toEqual(['Cold', 'Pressed', 'Olive', 'Oil']);
     });
@@ -119,6 +116,5 @@ describe('scenario 3: Add new product', () => {
         const pattern = /\bPRC\d+\b/g;
         expect(words(productDetails, pattern)).toEqual(['PRC123']);
     });
-
 });
 
