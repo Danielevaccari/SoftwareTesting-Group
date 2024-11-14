@@ -56,7 +56,7 @@ describe("endsWith.js general tests", () => {
 		});
 
 		test("verifies product IDs end with expected pattern", () => {
-			expect(endsWith("SKU-12345", "45")).toBe(true);
+			expect(endsWith("PROD12345", "45")).toBe(true);
 		});
 	});
 });
