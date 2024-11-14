@@ -20,7 +20,8 @@
 		"isBuffer.js",
 		"isTypedArray.js",
 		"isObjectLike.js",
-		"isLength.js"
+		"isLength.js",
+		"memoize.js"
 	],
 	"coverageReporters": ["lcov", "text"]
 }

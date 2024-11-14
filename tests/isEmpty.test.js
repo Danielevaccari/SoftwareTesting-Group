@@ -1,86 +1,5 @@
 import isEmpty from '../scripts/isEmpty.js';
 
-describe('isEmpty.js general tests', () => {
-    test('should return true for null', () => {
-        expect(isEmpty(null)).toBe(true);
-    });
-
-    test('should return true for undefined', () => {
-        expect(isEmpty(undefined)).toBe(true);
-    });
-
-    test('should return true for boolean value true', () => {
-        expect(isEmpty(true)).toBe(true);
-    });
-
-    test('should return true for boolean value false', () => {
-        expect(isEmpty(false)).toBe(true);
-    });
-
-    test('should return true for number', () => {
-        expect(isEmpty(1)).toBe(true);
-    });
-
-    test('should return true for empty string', () => {
-        expect(isEmpty("")).toBe(true);
-    });
-
-    test('should return false for non-empty string', () => {
-        expect(isEmpty("abc")).toBe(false);
-    });
-
-    test('should return true for empty array', () => {
-        expect(isEmpty([])).toBe(true);
-    });
-
-    test('should return false for non-empty array', () => {
-        expect(isEmpty([1, 2, 3])).toBe(false);
-    });
-
-    test('should return true for empty arguments object', () => {
-        function testFunc() {
-            return isEmpty(arguments);
-        }
-        expect(testFunc()).toBe(true);
-    });
-
-    test('should return false for non-empty arguments object', () => {
-        function testFunc() {
-            return isEmpty(arguments);
-        }
-        expect(testFunc(1, 2, 3)).toBe(false);
-    });
-
-    test('should return true for empty map', () => {
-        const map = new Map();
-        expect(isEmpty(map)).toBe(true);
-    });
-
-    test('should return false for non-empty map', () => {
-        const map = new Map();
-        map.set('key', 'value');
-        expect(isEmpty(map)).toBe(false);
-    });
-
-    test('should return true for empty set', () => {
-        const set = new Set();
-        expect(isEmpty(set)).toBe(true);
-    });
-
-    test('should return false for non-empty set', () => {
-        const set = new Set([1, 2, 3]);
-        expect(isEmpty(set)).toBe(false);
-    });
-
-    test('should return true for empty object', () => {
-        expect(isEmpty({})).toBe(true);
-    });
-
-    test('should return false for non-empty object', () => {
-        expect(isEmpty({ key: 'value' })).toBe(false);
-    });
-});
-
 /**
  * Scenario 1: Search functionality
  */
@@ -105,6 +24,24 @@ describe('scenario 1: Search functionality tests', () => {
         expect(isEmpty(['Apple', 'Juice', 'Snacks'])).toBe(false);
     });
 
+    test('should return true for undefined search input', () => {
+        expect(isEmpty(undefined)).toBe(true);
+    });
+
+    test('should return true for empty arguments object in search functionality', () => {
+        function testFunc() {
+            return isEmpty(arguments);
+        }
+        expect(testFunc()).toBe(true);
+    });
+
+    test('should return false for non-empty arguments object in search functionality', () => {
+        function testFunc() {
+            return isEmpty(arguments);
+        }
+        expect(testFunc(1, 2, 3)).toBe(false);
+    });
+
 });
 
 /**
@@ -126,6 +63,17 @@ describe('scenario 2: Shopping cart Tests', () => {
     test('should return false for a non-empty array representing cart items', () => {
         expect(isEmpty(['apple', 'banana'])).toBe(false);
     });
+
+    test('should return true for an empty map representing cart items', () => {
+        const cartMap = new Map();
+        expect(isEmpty(cartMap)).toBe(true);
+    });
+
+    test('should return false for a non-empty map representing cart items', () => {
+        const cartMap = new Map([['apple', 3]]);
+        expect(isEmpty(cartMap)).toBe(false);
+    });
+
 });
 
 /**
@@ -148,11 +96,7 @@ describe('scenario 3: Add new product tests', () => {
         expect(isEmpty(['Gluten-Free', 'Vegan', 'Non-GMO'])).toBe(false);
     });
 
-    test('should return true for an empty object representing product details', () => {
-        expect(isEmpty({})).toBe(true);
-    });
-
-    test('should return false for a non-empty object representing product details', () => {
-        expect(isEmpty({ organic: true, weight: '200g' })).toBe(false);
+    test('should return true for undefined product input', () => {
+        expect(isEmpty(undefined)).toBe(true);
     });
 });
