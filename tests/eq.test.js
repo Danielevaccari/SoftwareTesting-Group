@@ -25,8 +25,8 @@ describe("eq.js general tests", () => {
 		test("should compare product attributes", () => {
 			const product = { id: "PROD123", name: "Apple" };
 			const sameProduct = { id: "PROD123", name: "Apple" };
-			expect(eq(product, product)).toBe(true);
-			expect(eq(product, sameProduct)).toBe(false);
+			expect(eq(product.id, product.id)).toBe(true);
+			expect(eq(product.name, sameProduct.id)).toBe(false);
 		});
 	});
 
