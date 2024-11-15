@@ -9,7 +9,7 @@ describe("capitalize.js general tests", () => {
 		expect(capitalize("123aBC!@#dEf")).toBe("123abc!@#def");
 	});
 
-	test("should work with non-string inputs", () => {
+	test("should not work with non-string inputs", () => {
 		expect(capitalize(123)).toBe("123");
 		expect(capitalize(null)).toBe("Null");
 		expect(capitalize(undefined)).toBe("Undefined");
