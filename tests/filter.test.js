@@ -25,33 +25,33 @@ describe("filter.js general tests", () => {
 	describe("scenario 1: Product Search", () => {
 		test("filters products by category", () => {
 			const products = [
-				{ id: 1, name: "Laptop", category: "Electronics" },
-				{ id: 2, name: "Book", category: "Books" },
-				{ id: 3, name: "Smartphone", category: "Electronics" },
+				{ id: 1, name: "Apple", category: "Fruits" },
+				{ id: 2, name: "Cereal", category: "Breakfast" },
+				{ id: 3, name: "Banana", category: "Fruits" },
 			];
 			const electronicProducts = filter(
 				products,
-				product => product.category === "Electronics"
+				product => product.category === "Fruits"
 			);
 			expect(electronicProducts).toEqual([
-				{ id: 1, name: "Laptop", category: "Electronics" },
-				{ id: 3, name: "Smartphone", category: "Electronics" },
+				{ id: 1, name: "Apple", category: "Fruits" },
+				{ id: 3, name: "Banana", category: "Fruits" },
 			]);
 		});
 
 		test("filters products by price range", () => {
 			const products = [
-				{ id: 1, name: "Shoes", price: 50 },
-				{ id: 2, name: "Jacket", price: 150 },
-				{ id: 3, name: "Hat", price: 20 },
+				{ id: 1, name: "Banana", price: 5 },
+				{ id: 2, name: "Cereal", price: 15 },
+				{ id: 3, name: "Apple", price: 2 },
 			];
 			const affordableProducts = filter(
 				products,
-				product => product.price < 100
+				product => product.price < 10
 			);
 			expect(affordableProducts).toEqual([
-				{ id: 1, name: "Shoes", price: 50 },
-				{ id: 3, name: "Hat", price: 20 },
+				{ id: 1, name: "Banana", price: 5 },
+				{ id: 3, name: "Apple", price: 2 },
 			]);
 		});
 	});
@@ -62,27 +62,27 @@ describe("filter.js general tests", () => {
 	describe("scenario 2", () => {
 		test("filters out products not in stock", () => {
 			const cartItems = [
-				{ id: 1, name: "Item1", stock: 5 },
-				{ id: 2, name: "Item2", stock: 0 },
-				{ id: 3, name: "Item3", stock: 10 },
+				{ id: 1, name: "Banana", stock: 5 },
+				{ id: 2, name: "Cereal", stock: 0 },
+				{ id: 3, name: "Apple", stock: 10 },
 			];
 			const availableItems = filter(cartItems, item => item.stock > 0);
 			expect(availableItems).toEqual([
-				{ id: 1, name: "Item1", stock: 5 },
-				{ id: 3, name: "Item3", stock: 10 },
+				{ id: 1, name: "Banana", stock: 5 },
+				{ id: 3, name: "Apple", stock: 10 },
 			]);
 		});
 
 		test("filters products by isNew property", () => {
 			const products = [
-				{ id: 1, name: "Product A", isNew: true },
-				{ id: 2, name: "Product B", isNew: false },
-				{ id: 3, name: "Product C", isNew: true },
+				{ id: 1, name: "Banana", isNew: true },
+				{ id: 2, name: "Cereal", isNew: false },
+				{ id: 3, name: "Apple", isNew: true },
 			];
 			const newProducts = filter(products, product => product.isNew);
 			expect(newProducts).toEqual([
-				{ id: 1, name: "Product A", isNew: true },
-				{ id: 3, name: "Product C", isNew: true },
+				{ id: 1, name: "Banana", isNew: true },
+				{ id: 3, name: "Apple", isNew: true },
 			]);
 		});
 	});

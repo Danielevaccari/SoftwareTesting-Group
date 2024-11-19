@@ -1,9 +1,4 @@
-import createCaseFirst from "./.internal/createCaseFirst.js";
-
-/////////////////////////////////////////
-////// Daniele Vaccari 2024.10.20
-////// This file is not part of our tests but is included because our tests files call it as a dependency
-/////////////////////////////////////////
+import createCaseFirst from './.internal/createCaseFirst.js'
 
 /**
  * Converts the first character of `string` to upper case.
@@ -21,6 +16,6 @@ import createCaseFirst from "./.internal/createCaseFirst.js";
  * upperFirst('FRED')
  * // => 'FRED'
  */
-const upperFirst = createCaseFirst("toUpperCase");
+const upperFirst = createCaseFirst('toUpperCase')
 
-export default upperFirst;
+export default upperFirst

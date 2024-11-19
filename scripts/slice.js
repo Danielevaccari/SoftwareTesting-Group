@@ -1,8 +1,3 @@
-/////////////////////////////////////////
-////// Daniele Vaccari 2024.10.20
-////// This file is not part of our tests but is included because our tests files call it as a dependency
-/////////////////////////////////////////
-
 /**
  * Creates a slice of `array` from `start` up to, but not including, `end`.
  *
@@ -24,28 +19,28 @@
  * // => [3, 4]
  */
 function slice(array, start, end) {
-	let length = array == null ? 0 : array.length;
-	if (!length) {
-		return [];
-	}
-	start = start == null ? 0 : start;
-	end = end === undefined ? length : end;
+  let length = array == null ? 0 : array.length
+  if (!length) {
+    return []
+  }
+  start = start == null ? 0 : start
+  end = end === undefined ? length : end
 
-	if (start < 0) {
-		start = -start > length ? 0 : length + start;
-	}
-	if (end < 0) {
-		end += length;
-	}
-	length = start > end ? 0 : (end - start) >>> 0;
-	start >>>= 0;
+  if (start < 0) {
+    start = -start > length ? 0 : (length + start)
+  }
+  if (end < 0) {
+    end += length
+  }
+  length = start > end ? 0 : ((end - start) >>> 0)
+  start >>>= 0
 
-	let index = -1;
-	const result = new Array(length);
-	while (++index < length) {
-		result[index] = array[index + start];
-	}
-	return result;
+  let index = -1
+  const result = new Array(length)
+  while (++index < length) {
+    result[index] = array[index + start]
+  }
+  return result
 }
 
-export default slice;
+export default slice

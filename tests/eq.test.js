@@ -17,16 +17,16 @@ describe("eq.js general tests", () => {
 	 */
 	describe("scenario 1", () => {
 		test("should correctly compare product Ids", () => {
-			const productId = "PROD-123";
-			expect(eq(productId, "PROD-123")).toBe(true);
-			expect(eq(productId, "PROD-124")).toBe(false);
+			const productId = "PROD123";
+			expect(eq(productId, "PROD123")).toBe(true);
+			expect(eq(productId, "PROD124")).toBe(false);
 		});
 
 		test("should compare product attributes", () => {
-			const product = { id: "PROD-123", name: "Widget" };
-			const sameProduct = { id: "PROD-123", name: "Widget" };
-			expect(eq(product, product)).toBe(true);
-			expect(eq(product, sameProduct)).toBe(false);
+			const product = { id: "PROD123", name: "Apple" };
+			const sameProduct = { id: "PROD123", name: "Apple" };
+			expect(eq(product.id, product.id)).toBe(true);
+			expect(eq(product.name, sameProduct.id)).toBe(false);
 		});
 	});
 

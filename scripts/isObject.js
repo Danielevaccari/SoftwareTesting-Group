@@ -22,8 +22,8 @@
  * // => false
  */
 function isObject(value) {
-    const type = typeof value
-    return value != null && (type === 'object' || type === 'function')
-  }
-  
-  export default isObject
+  const type = typeof value
+  return value != null && (type === 'object' || type === 'function')
+}
+
+export default isObject
