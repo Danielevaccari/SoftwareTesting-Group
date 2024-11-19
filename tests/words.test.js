@@ -10,7 +10,7 @@ describe('scenario 1: Search functionality tests', () => {
     });
 
     test('should split product search input with custom pattern', () => {
-        expect(words('PRC123, PRC234, & PRC345', /\bPRC\d+\b/g)).toEqual(['PRC123', 'PRC234', 'PRC345']);
+        expect(words('PROD123, PROD234, & PROD345', /\bPROD\d+\b/g)).toEqual(['PROD123', 'PROD234', 'PROD345']);
     });
 
     test('should split product search input with mixed casing correctly', () => {
@@ -38,8 +38,8 @@ describe('scenario 1: Search functionality tests', () => {
     });
 
     test('should return an empty array when no product codes match the specified pattern', () => {
-        const searchInput = 'PRCC123';
-        const pattern = /\bPRC\d+\b/g;
+        const searchInput = 'PRODT123';
+        const pattern = /\bPROD\d+\b/g;
         expect(words(searchInput, pattern)).toEqual([]);
     });
 });
@@ -59,14 +59,14 @@ describe('scenario 3: Add new product tests', () => {
     });
 
     test('should match alphanumeric product codes using a specific pattern', () => {
-        const productDetails = 'Product Code: PRC123';
-        const pattern = /\bPRC\d+\b/g;
-        expect(words(productDetails, pattern)).toEqual(['PRC123']);
+        const productDetails = 'Product Code: PROD123';
+        const pattern = /\bPROD\d+\b/g;
+        expect(words(productDetails, pattern)).toEqual(['PROD123']);
     });
 
     test('should return empty array if product code does not match pattern', () => {
         const productCode = '123-ABC';
-        const pattern = /\bPRC\d+\b/g;
+        const pattern = /\bPROD\d+\b/g;
         expect(words(productCode, pattern)).toEqual([]);
     });
 
