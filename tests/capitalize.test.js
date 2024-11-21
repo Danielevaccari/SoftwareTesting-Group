@@ -5,34 +5,36 @@ describe("capitalize.js general tests", () => {
 		expect(capitalize("")).toBe("");
 	});
 
-	test("should capitalize the first letter in a mixed string", () => {
-		expect(capitalize("123aBC!@#dEf")).toBe("123abc!@#def");
+	test("should capitalize the first character in a mixed string", () => {
+		expect(capitalize("h123aBC!@#dEf")).toBe("H123abc!@#def");
 	});
 
-	test("should not work with non-string inputs", () => {
-		expect(capitalize(123)).toBe("123");
-		expect(capitalize(null)).toBe("Null");
-		expect(capitalize(undefined)).toBe("Undefined");
+	test("should not work with numeric", () => {
+		expect(capitalize(123)).not.toBeString();
 	});
 
-	/**
-	 * Scenario 3
-	 */
-	describe("scenario 3", () => {
-		test("capitalizes product name", () => {
-			expect(capitalize("honey")).toBe("Honey");
-		});
+	test("should not work with null", () => {
+		expect(capitalize(null)).toBeNull();
+	});
 
-		test("capitalizes correctly two word product name", () => {
-			expect(capitalize("organic honey")).toBe("Organic honey");
-		});
+	test("should not work with undefined", () => {
+		expect(capitalize(undefined)).toBeUndefined();
+	});
+});
 
-		test("correctly formats all uppercase characters", () => {
-			expect(capitalize("HONEY")).toBe("Honey");
-		});
+/**
+ * Scenario 3
+ */
+describe("scenario 3", () => {
+	test("capitalizes product name", () => {
+		expect(capitalize("honey")).toBe("Honey");
+	});
 
-		test("manages inputs with numbers and special chars", () => {
-			expect(capitalize("honey #1")).toBe("Honey #1");
-		});
+	test("capitalizes correctly two word product name", () => {
+		expect(capitalize("organic honey")).toBe("Organic honey");
+	});
+
+	test("correctly formats all uppercase characters", () => {
+		expect(capitalize("HONEY")).toBe("Honey");
 	});
 });

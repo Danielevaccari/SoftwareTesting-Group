@@ -5,8 +5,8 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-		"test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+		"test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --bail=1000",
+		"test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --bail=1000"
 	},
 	"author": "",
 	"license": "ISC",
