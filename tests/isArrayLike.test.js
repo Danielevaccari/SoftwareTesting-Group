@@ -21,6 +21,11 @@ describe('scenario 2: Shopping cart tests', () => {
         expect(isArrayLike(products)).toBe(true);
     });
 
+    test('products in the cart with a numeric "length" property should not be considered array-like', () => {
+        const product = { length: 10 };
+        expect(isArrayLike(product)).toBe(false);
+    });
+
     test('cart should be array-like and empty initially', () => {
         expect(isArrayLike(cart)).toBe(true);
         expect(cart.length).toBe(0);

@@ -21,10 +21,6 @@ describe('scenario 1: Search functionality tests', () => {
         expect(toNumber(undefined)).toBeNaN();
         expect(toNumber('+0x123')).toBeNaN();
     });
-
-    test("should handle empty strings and return zero for filter inputs", () => {
-        expect(toNumber("")).toBe(0);
-    });
 });
 
 /**
@@ -36,12 +32,11 @@ describe('scenario 2: Shopping cart tests', () => {
         expect(toNumber('7.5')).toBe(7.5);
     });
 
-    test('should handle invalid quantity by returning zero or NaN', () => {
+    test('should handle invalid product quantities', () => {
         expect(toNumber('three')).toBeNaN();
         expect(toNumber(Symbol('quantity'))).toBeNaN();
         expect(toNumber({ quantity: 'five' })).toBeNaN();
         expect(toNumber(NaN)).toBeNaN();
-        expect(toNumber(null)).toBe(0);
         expect(toNumber(undefined)).toBeNaN();
     });
 
@@ -58,11 +53,6 @@ describe('scenario 2: Shopping cart tests', () => {
     test('should handle prices correctly when adding to cart', () => {
         expect(toNumber('19.99')).toBe(19.99);
         expect(toNumber('7.5')).toBe(7.5);
-    });
-
-    test('should return zero or NaN appropriately for null or undefined prices', () => {
-        expect(toNumber(null)).toBe(0);
-        expect(toNumber(undefined)).toBeNaN();
     });
 
     test('should handle zero price when the cart is empty', () => {
@@ -91,10 +81,17 @@ describe('scenario 3: Add new product tests', () => {
     });
 
     test('should handle non-numeric input values in numeric fields (ex: Price and Quantity)', () => {
-        expect(toNumber(null)).toBe(0);
         expect(toNumber(undefined)).toBeNaN();
-        expect(toNumber('')).toBe(0);
         expect(toNumber({})).toBeNaN();
+    });
+
+    test('should handle null as invalid input for mandatory numeric input fields', () => {
+        expect(toNumber(null)).toBeNaN();
+    });
+
+    test('should handle empty strings as invalid input for mandatory numeric input fields', () => {
+        expect(toNumber("")).toBeNaN();
+        expect(toNumber('')).toBeNaN();
     });
 
 });
