@@ -12,12 +12,13 @@ describe('scenario 1: Search functionality tests', () => {
     test('should return default value for missing search item', () => {
         const searchData = { query: { term: 'zbfs', price: 3 } };
         expect(get(searchData, 'query.nonExistingTerm', 'No item found')).toBe('No item found');
-        expect(get(null, 'query.term', 'No item searched')).toBe('No item searched');
+        expect(get(searchData, null, 'No item found')).toBe('No item found');
+        expect(get(searchData, undefined, 'No item found')).toBe('No item found');
     });
 
     test('should return default value for undefined query', () => {
-        const searchData = { query: undefined };
-        expect(get(searchData, 'query.term', 'default')).toBe('default');
+        expect(get(null, 'query.term', 'No item searched')).toBe('No item searched');
+        expect(get(undefined, 'query.term', 'No item searched')).toBe('No item searched');
     });
 
     test('should return correct search from a nested search', () => {
