@@ -37,7 +37,7 @@ npm run test
 
 ---
 
-### Continuous Integration and Coveralls Integration
+## Continuous Integration and Coveralls Integration
 Our GitHub Actions workflow runs tests and generates a coverage report for both pushes and pull requests targeting the `main` branch. The coverage report is uploaded to Coveralls for analysis and visibility
 
 You can view the **Coveralls report** here: [Coveralls - SoftwareTesting-Group](https://coveralls.io/github/Danielevaccari/SoftwareTesting-Group)
